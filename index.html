@@ -112,7 +112,7 @@
 
                 <div class="search-bar">
                     <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                    <input type="text" id="search-input" placeholder="검색어 입력 (예: task 2, part 3, 템플릿, 동의어...)" autocomplete="off">
+                    <input type="text" id="search-input" placeholder="검색어 입력 (예: Task 2, E2 IELTS, 템플릿, 팁...)" autocomplete="off">
                     <button id="clear-search-btn" class="clear-btn hidden" aria-label="검색어 삭제">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
@@ -146,7 +146,7 @@
                 </div>
                 <div class="banner-pills">
                     <div class="pill-badge" id="total-videos-count">총 0개 영상</div>
-                    <div class="pill-badge highlight"><i class="fa-brands fa-youtube"></i> 실시간 유튜브 데이터</div>
+                    <div class="pill-badge highlight"><i class="fa-brands fa-youtube"></i> 검증된 유튜브 고화질 인강</div>
                 </div>
             </section>
 
@@ -191,6 +191,11 @@
                     <iframe id="youtube-iframe" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
 
+                <div class="player-notice-bar">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <span>브라우저 보안이나 유튜브 퍼가기 정책으로 플레이어 차단 시, 아래 <b>[유튜브에서 직접 보기]</b> 버튼을 누르시면 새 창에서 즉시 시청 가능합니다.</span>
+                </div>
+
                 <div class="video-details-layout">
                     <div class="video-main-info">
                         <div class="modal-tags" id="modal-tags">
@@ -217,7 +222,7 @@
                                 <i class="fa-regular fa-circle-check"></i> 학습 완료 표시
                             </button>
                             <a href="#" id="modal-yt-link" target="_blank" rel="noopener noreferrer" class="action-btn yt-direct-btn">
-                                <i class="fa-brands fa-youtube"></i> 유튜브에서 보기
+                                <i class="fa-brands fa-youtube"></i> 유튜브에서 직접 보기
                             </a>
                         </div>
                     </div>

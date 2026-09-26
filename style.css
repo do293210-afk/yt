@@ -654,6 +654,16 @@ body {
     max-width: 140px;
 }
 
+.direct-yt-icon-link {
+    padding: 4px 6px;
+    border-radius: 4px;
+    transition: var(--transition);
+}
+
+.direct-yt-icon-link:hover {
+    background: rgba(255, 0, 0, 0.15);
+}
+
 .fav-btn-icon {
     background: transparent;
     border: none;
@@ -693,38 +703,6 @@ body {
     border-radius: var(--radius-full);
     cursor: pointer;
     font-weight: 600;
-}
-
-/* Skeleton Loading Cards */
-.skeleton-card {
-    background: var(--bg-card);
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    height: 320px;
-    display: flex;
-    flex-direction: column;
-}
-.skeleton-thumb {
-    width: 100%;
-    height: 170px;
-    background: linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.03) 75%);
-    background-size: 200% 100%;
-    animation: loading 1.5s infinite;
-}
-.skeleton-body {
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-.skeleton-line {
-    height: 14px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 4px;
-}
-@keyframes loading {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
 }
 
 /* Modal Backdrops & Dialogs */
@@ -795,6 +773,17 @@ body {
     height: 100%;
 }
 
+.player-notice-bar {
+    background: rgba(99, 102, 241, 0.1);
+    border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+    padding: 8px 16px;
+    font-size: 0.78rem;
+    color: #c7d2fe;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
 .video-details-layout {
     display: grid;
     grid-template-columns: 1fr 340px;
@@ -856,7 +845,6 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
-
 }
 
 .action-btn:hover {
@@ -877,9 +865,14 @@ body {
 
 .yt-direct-btn {
     text-decoration: none;
-    background: rgba(255, 0, 0, 0.15);
-    border-color: rgba(255, 0, 0, 0.4);
+    background: rgba(255, 0, 0, 0.2);
+    border-color: rgba(255, 0, 0, 0.5);
     color: #ff4d4d;
+    font-weight: 700;
+}
+
+.yt-direct-btn:hover {
+    background: rgba(255, 0, 0, 0.35);
 }
 
 /* Video Notes Panel */
