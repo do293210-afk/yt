@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IELTS Master Hub - 아이엘츠 영상 학습 플랫폼</title>
+    <meta name="description" content="유튜브 아이엘츠(IELTS) 리스닝, 리딩, 라이팅, 스피킹 핵심 인강 및 꿀팁 영상 모음집">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="brand">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div class="brand-text">
+                    <h2>IELTS <span>HUB</span></h2>
+                    <p>아이엘츠 성공 학습관</p>
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <div class="nav-section-title">메인 메뉴</div>
+                <button class="nav-item active" data-category="all">
+                    <i class="fa-solid fa-compass"></i>
+                    <span>전체 영상</span>
+                </button>
+                <button class="nav-item" data-category="listening">
+                    <i class="fa-solid fa-headphones"></i>
+                    <span>Listening (듣기)</span>
+                </button>
+                <button class="nav-item" data-category="reading">
+                    <i class="fa-solid fa-book-open"></i>
+                    <span>Reading (읽기)</span>
+                </button>
+                <button class="nav-item" data-category="writing">
+                    <i class="fa-solid fa-pen-nib"></i>
+                    <span>Writing (쓰기)</span>
+                </button>
+                <button class="nav-item" data-category="speaking">
+                    <i class="fa-solid fa-comments"></i>
+                    <span>Speaking (말하기)</span>
+                </button>
+
+                <div class="nav-section-title">유형별 / 팁</div>
+                <button class="nav-item" data-category="beginner">
+                    <i class="fa-solid fa-seedling"></i>
+                    <span>초보 입문 가이드</span>
+                </button>
+                <button class="nav-item" data-category="vocab">
+                    <i class="fa-solid fa-spell-check"></i>
+                    <span>필수 어휘/표현</span>
+                </button>
+                <button class="nav-item" data-category="strategy">
+                    <i class="fa-solid fa-trophy"></i>
+                    <span>Band 7.0+ 전략</span>
+                </button>
+
+                <div class="nav-section-title">내 보관함</div>
+                <button class="nav-item" data-category="favorites">
+                    <i class="fa-solid fa-bookmark"></i>
+                    <span>즐겨찾기 영상</span>
+                    <span class="badge" id="fav-count">0</span>
+                </button>
+                <button class="nav-item" data-category="history">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>수강 완료 영상</span>
+                    <span class="badge badge-success" id="completed-count">0</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="api-key-box">
+                    <button id="open-api-modal-btn" class="api-btn">
+                        <i class="fa-solid fa-key"></i> YouTube API 설정
+                    </button>
+                </div>
+                <div class="stats-card">
+                    <div class="stats-header">
+                        <i class="fa-solid fa-fire"></i> 오늘 학습 달성도
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="daily-progress" style="width: 0%"></div>
+                    </div>
+                    <div class="stats-footer">
+                        <span id="completed-text">0개 완료</span>
+                        <span id="streak-text">🔥 1일째</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Top Navbar Header -->
+            <header class="top-header">
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="메뉴 열기">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="search-input" placeholder="검색어 입력 (예: task 2, part 3, 템플릿, 동의어...)" autocomplete="off">
+                    <button id="clear-search-btn" class="clear-btn hidden" aria-label="검색어 삭제">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+
+                <div class="header-actions">
+                    <div class="filter-dropdown-wrap">
+                        <select id="sort-select" class="custom-select">
+                            <option value="recommended">추천순</option>
+                            <option value="popular">조회수순</option>
+                            <option value="latest">최신순</option>
+                        </select>
+                    </div>
+                    <div class="filter-dropdown-wrap">
+                        <select id="target-select" class="custom-select">
+                            <option value="all">목표 점수 전체</option>
+                            <option value="6.0">Target 5.5 - 6.5</option>
+                            <option value="7.0">Target 7.0 - 7.5</option>
+                            <option value="8.0">Target 8.0+</option>
+                        </select>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Banner / Hero Section -->
+            <section class="hero-banner">
+                <div class="banner-content">
+                    <div class="banner-tag"><i class="fa-solid fa-star"></i> IELTS BAND 7.0+ GOAL</div>
+                    <h1 id="category-title">전체 아이엘츠 꿀팁 & 강의</h1>
+                    <p id="category-desc">검증된 아이엘츠 전문 채널의 듣기, 읽기, 쓰기, 말하기 전략 영상과 실전 팁을 한눈에 학습해보세요.</p>
+                </div>
+                <div class="banner-pills">
+                    <div class="pill-badge" id="total-videos-count">총 0개 영상</div>
+                    <div class="pill-badge highlight"><i class="fa-brands fa-youtube"></i> 실시간 유튜브 데이터</div>
+                </div>
+            </section>
+
+            <!-- Quick Filter Tags -->
+            <section class="quick-tags" id="quick-tags-container">
+                <button class="tag-btn active" data-tag="all">전체</button>
+                <button class="tag-btn" data-tag="IELTS Advantage">IELTS Advantage</button>
+                <button class="tag-btn" data-tag="E2 IELTS">E2 IELTS</button>
+                <button class="tag-btn" data-tag="IELTS Liz">IELTS Liz</button>
+                <button class="tag-btn" data-tag="템플릿">템플릿/답안</button>
+                <button class="tag-btn" data-tag="실전모의">실전 모의고사</button>
+                <button class="tag-btn" data-tag="독학">독학 노하우</button>
+                <button class="tag-btn" data-tag="Task 2">Task 2 에세이</button>
+            </section>
+
+            <!-- Video Grid Container -->
+            <section class="video-grid-container">
+                <div class="video-grid" id="video-grid">
+                    <!-- Skeleton Cards during load -->
+                </div>
+                
+                <!-- Empty State -->
+                <div class="empty-state hidden" id="empty-state">
+                    <i class="fa-solid fa-video-slash empty-icon"></i>
+                    <h3>검색 결과가 없습니다</h3>
+                    <p>다른 검색어나 필터를 선택해 보세요.</p>
+                    <button class="reset-btn" id="reset-filters-btn">필터 초기화</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Video Modal Player -->
+    <div class="modal-backdrop hidden" id="video-modal">
+        <div class="modal-container">
+            <button class="modal-close" id="modal-close-btn" aria-label="닫기">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="modal-body">
+                <div class="video-player-wrap">
+                    <iframe id="youtube-iframe" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+
+                <div class="video-details-layout">
+                    <div class="video-main-info">
+                        <div class="modal-tags" id="modal-tags">
+                            <!-- Dynamic tags -->
+                        </div>
+                        <h2 id="modal-video-title">영상 제목</h2>
+                        <div class="channel-info-row">
+                            <span class="channel-name" id="modal-channel-name">채널명</span>
+                            <span class="divider">•</span>
+                            <span class="views-count" id="modal-views">조회수 0회</span>
+                            <span class="divider">•</span>
+                            <span class="pub-date" id="modal-date">등록일</span>
+                        </div>
+
+                        <div class="video-description-box" id="modal-description">
+                            영상 설명글이 여기에 들어갑니다.
+                        </div>
+
+                        <div class="modal-action-bar">
+                            <button class="action-btn" id="modal-fav-btn">
+                                <i class="fa-regular fa-bookmark"></i> 즐겨찾기 추가
+                            </button>
+                            <button class="action-btn" id="modal-complete-btn">
+                                <i class="fa-regular fa-circle-check"></i> 학습 완료 표시
+                            </button>
+                            <a href="#" id="modal-yt-link" target="_blank" rel="noopener noreferrer" class="action-btn yt-direct-btn">
+                                <i class="fa-brands fa-youtube"></i> 유튜브에서 보기
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Notes Section -->
+                    <div class="video-notes-panel">
+                        <div class="notes-header">
+                            <h3><i class="fa-solid fa-pen-to-square"></i> 내 공부 노트</h3>
+                            <span class="save-status" id="note-save-status">자동 저장됨</span>
+                        </div>
+                        <textarea id="video-note-input" placeholder="이 영상에서 기억하고 싶은 표현, 템플릿, 팁을 메모하세요..."></textarea>
+                        <div class="notes-footer">
+                            <span class="note-char-count"><span id="char-count">0</span>자</span>
+                            <button id="save-note-btn" class="save-note-btn">노트 저장</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- API Key Settings Modal -->
+    <div class="modal-backdrop hidden" id="api-modal">
+        <div class="modal-card">
+            <button class="modal-close" id="api-modal-close-btn" aria-label="닫기">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="api-modal-header">
+                <div class="api-icon"><i class="fa-solid fa-key"></i></div>
+                <h3>YouTube Data API v3 설정</h3>
+            </div>
+            <p class="api-desc">
+                본 앱에는 엄선된 아이엘츠 학습 영상들이 기본 탑재되어 있습니다. <br>
+                자신만의 YouTube Data API Key를 입력하시면 유튜브 실시간 검색 데이터를 받아올 수 있습니다. (선택사항)
+            </p>
+            <div class="input-group">
+                <label for="api-key-input">API KEY</label>
+                <input type="password" id="api-key-input" placeholder="AIzaSy...">
+            </div>
+            <div class="api-modal-actions">
+                <button id="clear-api-key-btn" class="btn-secondary">API 키 삭제</button>
+                <button id="save-api-key-btn" class="btn-primary">저장하기</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
